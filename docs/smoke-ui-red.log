@@ -1,0 +1,5 @@
+Captured failure excerpt from npm run test:smoke after strengthening the native Save new workflow:
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+40 !== 64
+At the persisted preset assertion.
+The smoke had polled main-process state before the renderer finished its save response. The controls now disable editing during pending saves and the smoke waits for visible save/update completion before continuing, then asserts persisted bytes immediately after update. Full instrumented successful diagnostic run is in smoke-debug.log.

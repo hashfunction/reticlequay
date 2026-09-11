@@ -1,0 +1,32 @@
+
+> reticlequay@1.0.0 test
+> tsx --test tests/*.test.ts
+
+✔ built-in reticles contain bounded simple geometry (0.524125ms)
+✔ imported file paths, markup and unsupported shapes are rejected (0.158333ms)
+✔ save activates only the matching monitor; delete removes its active mapping (1.593791ms)
+✔ named presets load independently per display and cannot migrate existing IDs (0.228167ms)
+✔ malformed commands cannot add privileged operations or extra fields (0.11025ms)
+✔ IPC permits the controls main frame and denies overlay, subframes and navigated frames (0.09175ms)
+✔ portable staging includes runnable app and licenses while excluding source, tests and unsafe legacy assets (21.487792ms)
+✔ centers a 40 DIP overlay on a display left of primary (0.7495ms)
+✔ uses display origin and DIP offsets without applying scale twice (0.080291ms)
+✔ clamps large offsets to selected display instead of leaking onto adjacent display (0.061375ms)
+✔ rejects non-finite and out-of-range settings (0.446333ms)
+✔ rejects duplicates, dangling selections and cross-display preset mappings (0.1715ms)
+✔ disconnected display stays saved and restores only when same display returns (0.1135ms)
+✔ atomically round-trips settings using real files (13.022375ms)
+✔ preserves corrupt bytes in recovery copy and starts safely empty (1.45675ms)
+✔ fresh install is empty and invalid saves leave previous settings intact (5.030791ms)
+✔ unreadable startup locks every persisted mutation and preserves original bytes even after permissions return (12.614583ms)
+✔ injected read failure cannot promote empty settings or write through the real store (1.157417ms)
+✔ no mutation is accepted before loading has completed (0.404208ms)
+✔ successfully preserved corrupt settings remain editable (4.844583ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 20
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 190.239042

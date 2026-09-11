@@ -1,0 +1,28 @@
+
+> reticlequay@1.0.0 test
+> tsx --test tests/*.test.ts
+
+✔ built-in reticles contain bounded simple geometry (2.408792ms)
+✔ imported file paths, markup and unsupported shapes are rejected (0.417708ms)
+✔ save activates only the matching monitor; delete removes its active mapping (1.384167ms)
+✔ named presets load independently per display and cannot migrate existing IDs (0.253208ms)
+✔ malformed commands cannot add privileged operations or extra fields (0.110084ms)
+✔ IPC permits the controls main frame and denies overlay, subframes and navigated frames (0.100083ms)
+✔ portable staging includes runnable app and licenses while excluding source, tests and unsafe legacy assets (26.477625ms)
+✔ centers a 40 DIP overlay on a display left of primary (0.905125ms)
+✔ uses display origin and DIP offsets without applying scale twice (0.087208ms)
+✔ clamps large offsets to selected display instead of leaking onto adjacent display (0.069791ms)
+✔ rejects non-finite and out-of-range settings (0.476334ms)
+✔ rejects duplicates, dangling selections and cross-display preset mappings (0.177833ms)
+✔ disconnected display stays saved and restores only when same display returns (0.120583ms)
+✔ atomically round-trips settings using real files (11.509334ms)
+✔ preserves corrupt bytes in recovery copy and starts safely empty (1.343417ms)
+✔ fresh install is empty and invalid saves leave previous settings intact (5.273916ms)
+ℹ tests 16
+ℹ suites 0
+ℹ pass 16
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 148.153625

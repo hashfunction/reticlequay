@@ -1,0 +1,12 @@
+✔ unreadable startup locks every persisted mutation and preserves original bytes even after permissions return (13.053208ms)
+✔ injected read failure cannot promote empty settings or write through the real store (1.217666ms)
+✔ no mutation is accepted before loading has completed (0.399834ms)
+✔ successfully preserved corrupt settings remain editable (5.287833ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 143.06275

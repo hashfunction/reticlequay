@@ -1,0 +1,33 @@
+
+> reticlequay@1.0.0 test:smoke
+> npm run build && node tests/electron-smoke.cjs
+
+
+> reticlequay@1.0.0 build
+> node scripts/build.cjs
+
+Built ReticleQuay TypeScript main and sandboxed preload scripts.
+AFTER UPDATE {"ok":true,"state":{"settings":{"version":1,"presets":[{"id":"56d568b7-8eb7-4c62-926a-9fcf67cc354b","name":"Smoke precision","displayId":"1","shape":"cross-dot","color":"#72dec9","size":64,"opacity":0.7,"rotation":15,"offsetX":0,"offsetY":0,"visible":true}],"activeByDisplay":{"1":"56d568b7-8eb7-4c62-926a-9fcf67cc354b"}},"displays":[{"id":"1","label":"Built-in Retina Display","bounds":{"x":0,"y":0,"width":1728,"height":1117},"scaleFactor":2}],"hidden":false,"notice":"","hotkeyAvailable":true,"geometries":{"cross":[{"kind":"line","values":[50,14,50,36]},{"kind":"line","values":[50,64,50,86]},{"kind":"line","values":[14,50,36,50]},{"kind":"line","values":[64,50,86,50]}],"dot":[{"kind":"circle","values":[50,50,5],"filled":true}],"ring":[{"kind":"circle","values":[50,50,30]}],"chevron":[{"kind":"line","values":[25,60,50,35]},{"kind":"line","values":[50,35,75,60]}],"cross-dot":[{"kind":"line","values":[50,14,50,36]},{"kind":"line","values":[50,64,50,86]},{"kind":"line","values":[14,50,36,50]},{"kind":"line","values":[64,50,86,50]},{"kind":"circle","values":[50,50,5],"filled":true}]}}} /private/var/folders/mt/ll630b9x785gtdp6529w25bh0000gn/T/reticlequay-smoke-BdFIPC /var/folders/mt/ll630b9x785gtdp6529w25bh0000gn/T/reticlequay-smoke-BdFIPC {
+  "version": 1,
+  "presets": [
+    {
+      "id": "56d568b7-8eb7-4c62-926a-9fcf67cc354b",
+      "name": "Smoke precision",
+      "displayId": "1",
+      "shape": "cross-dot",
+      "color": "#72dec9",
+      "size": 64,
+      "opacity": 0.7,
+      "rotation": 15,
+      "offsetX": 0,
+      "offsetY": 0,
+      "visible": true
+    }
+  ],
+  "activeByDisplay": {
+    "1": "56d568b7-8eb7-4c62-926a-9fcf67cc354b"
+  }
+}
+
+PERSISTED {"version":1,"presets":[{"id":"56d568b7-8eb7-4c62-926a-9fcf67cc354b","name":"Smoke precision","displayId":"1","shape":"cross-dot","color":"#72dec9","size":64,"opacity":0.7,"rotation":15,"offsetX":0,"offsetY":0,"visible":true}],"activeByDisplay":{"1":"56d568b7-8eb7-4c62-926a-9fcf67cc354b"}}
+PASS: real Electron startup, sandbox bridge, controls save/update, generated overlay, invalid payload rejection, navigation/new-window denial, hide/show and persisted relaunch.

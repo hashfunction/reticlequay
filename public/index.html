@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ReticleQuay</title>
+    <link rel="stylesheet" href="/style.css" />
+    <script src="/scripts/draw.js" defer></script>
+    <script src="/scripts/main.js" defer></script>
+  </head>
+  <body>
+    <div class="app">
+      <header>
+        <div>
+          <p class="eyebrow">RETICLEQUAY</p>
+          <h1>Make your center.</h1>
+          <p class="subtitle">
+            Independent display presets. Your settings stay on this device.
+          </p>
+        </div>
+        <button id="toggle" class="secondary">Hide overlays</button>
+      </header>
+      <p id="notice" class="notice" role="status" hidden></p>
+      <main>
+        <section class="panel controls" aria-label="Reticle controls">
+          <div class="section-heading">
+            <h2>Display & preset</h2>
+            <span id="connection" class="badge">Loading</span>
+          </div>
+          <label for="display">Display</label
+          ><select id="display"></select>
+          <label for="presets">Saved presets on this display</label
+          ><select id="presets">
+            <option value="">New preset</option>
+          </select>
+          <form id="editor">
+            <label for="name">Preset name</label
+            ><input id="name" maxlength="60" value="My reticle" required />
+            <div class="row">
+              <div>
+                <label for="shape">Built-in shape</label
+                ><select id="shape">
+                  <option value="cross">Cross</option>
+                  <option value="dot">Dot</option>
+                  <option value="ring">Ring</option>
+                  <option value="chevron">Chevron</option>
+                  <option value="cross-dot">Cross + dot</option>
+                </select>
+              </div>
+              <div>
+                <label for="color">Color</label
+                ><input type="color" id="color" value="#72dec9" />
+              </div>
+            </div>
+            <div class="row three">
+              <div>
+                <label for="size">Size (DIP)</label
+                ><input
+                  type="number"
+                  id="size"
+                  min="8"
+                  max="512"
+                  step="1"
+                  value="40"
+                  required
+                />
+              </div>
+              <div>
+                <label for="opacity">Opacity (%)</label
+                ><input
+                  type="number"
+                  id="opacity"
+                  min="5"
+                  max="100"
+                  step="1"
+                  value="100"
+                  required
+                />
+              </div>
+              <div>
+                <label for="rotation">Rotation (°)</label
+                ><input
+                  type="number"
+                  id="rotation"
+                  min="0"
+                  max="360"
+                  step="1"
+                  value="0"
+                  required
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div>
+                <label for="offsetX">Horizontal offset (DIP)</label
+                ><input
+                  type="number"
+                  id="offsetX"
+                  min="-32768"
+                  max="32768"
+                  step="1"
+                  value="0"
+                  required
+                />
+              </div>
+              <div>
+                <label for="offsetY">Vertical offset (DIP)</label
+                ><input
+                  type="number"
+                  id="offsetY"
+                  min="-32768"
+                  max="32768"
+                  step="1"
+                  value="0"
+                  required
+                />
+              </div>
+            </div>
+            <label class="checkbox"
+              ><input type="checkbox" id="visible" checked /> Show this
+              display’s reticle</label
+            >
+            <div class="actions">
+              <button type="submit" id="save-new">Save new & apply</button
+              ><button type="button" class="secondary" id="update" disabled>
+                Update preset
+              </button>
+            </div>
+            <div class="actions minor">
+              <button type="button" class="text-button" id="load" disabled>
+                Apply saved preset</button
+              ><button
+                type="button"
+                class="text-button danger"
+                id="delete"
+                disabled
+              >
+                Delete preset
+              </button>
+            </div>
+          </form>
+          <p id="status" role="status" aria-live="polite">
+            Choose a display, then save a preset to show its overlay.
+          </p>
+        </section>
+        <aside>
+          <section class="panel preview-panel" aria-label="Reticle preview">
+            <div class="section-heading">
+              <h2>Reticle preview</h2>
+              <span id="visibility" class="badge">Ready to save</span>
+            </div>
+            <div class="preview">
+              <canvas
+                id="preview"
+                width="300"
+                height="280"
+                aria-label="Preview of the selected reticle"
+              ></canvas
+              ><span class="preview-caption">SHAPE PREVIEW · CENTERED</span>
+            </div>
+            <div class="display-info">
+              <strong id="display-title">Detecting displays…</strong>
+              <p id="display-detail"></p>
+            </div>
+          </section>
+          <section class="panel help">
+            <h2>Keep your focus</h2>
+            <p>
+              <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>H</kbd> hides or shows
+              all overlays. On macOS, use Command.
+            </p>
+            <p>
+              Overlays let clicks pass through. Use windowed or borderless
+              games; exclusive fullscreen and Game Bar are not supported.
+            </p>
+            <p>
+              Presets stay assigned to their display when it disconnects.
+              Offsets are clamped to that display’s edges.
+            </p>
+            <details>
+              <summary>About & help</summary>
+              <p>
+                ReticleQuay 1.0.0 · Built-in shapes only. Custom image and SVG
+                imports are not supported. No game-process access, telemetry, or
+                automatic updates.
+              </p>
+              <p>
+                Closing this window keeps overlays running in the tray. Choose
+                Quit ReticleQuay from the tray to exit.
+              </p>
+              <div class="links">
+                <a
+                  id="support-link"
+                  href="https://reticlequay.trieflow.com/support"
+                  data-help="support"
+                  >Support</a
+                ><a
+                  id="privacy-link"
+                  href="https://reticlequay.trieflow.com/privacy"
+                  data-help="privacy"
+                  >Privacy</a
+                ><button type="button" class="text-button" data-help="license">
+                  Licenses & credits
+                </button>
+              </div>
+            </details>
+          </section>
+        </aside>
+      </main>
+      <footer>
+        <span>RETICLEQUAY</span
+        ><span>One display. One active preset. Exactly your aim.</span>
+      </footer>
+    </div>
+  </body>
+</html>

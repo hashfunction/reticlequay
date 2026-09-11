@@ -1,0 +1,62 @@
+✖ unreadable startup locks every persisted mutation and preserves original bytes even after permissions return (6.572791ms)
+✖ injected read failure cannot promote empty settings or write through the real store (1.6615ms)
+✖ no mutation is accepted before loading has completed (11.1815ms)
+✔ successfully preserved corrupt settings remain editable (4.744292ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 1
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 194.7185
+
+✖ failing tests:
+
+test at tests/settings-session.test.ts:13:1
+✖ unreadable startup locks every persisted mutation and preserves original bytes even after permissions return (6.572791ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+  true !== false
+
+      at TestContext.<anonymous> (<source>/tests/settings-session.test.ts:20:10)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:358:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/settings-session.test.ts:33:1
+✖ injected read failure cannot promote empty settings or write through the real store (1.6615ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+  true !== false
+
+      at TestContext.<anonymous> (<source>/tests/settings-session.test.ts:41:10)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/settings-session.test.ts:47:1
+✖ no mutation is accepted before loading has completed (11.1815ms)
+  AssertionError [ERR_ASSERTION]: Missing expected rejection.
+      at async TestContext.<anonymous> (<source>/tests/settings-session.test.ts:49:63)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /read|restart/i,
+    operator: 'rejects',
+    diff: 'simple'
+  }

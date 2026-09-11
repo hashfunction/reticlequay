@@ -1,0 +1,1 @@
+Controls: public/index.html → public/style.css, public/scripts/draw.js, public/scripts/main.js. Overlay: public/crosshair.html → public/crosshair.css, public/scripts/draw.js, public/scripts/crosshair.js. Main exposes only typed preload APIs. No local imported components.

@@ -1,0 +1,117 @@
+
+> reticlequay@1.0.0 test
+> tsx --test tests/*.test.ts
+
+✖ built-in reticles contain bounded simple geometry (0.501042ms)
+✔ imported file paths, markup and unsupported shapes are rejected (0.818792ms)
+✖ centers a 40 DIP overlay on a display left of primary (0.673792ms)
+✖ uses display origin and DIP offsets without applying scale twice (0.102208ms)
+✖ clamps large offsets to selected display instead of leaking onto adjacent display (0.053917ms)
+✖ rejects non-finite and out-of-range settings (0.210459ms)
+✔ rejects duplicates, dangling selections and cross-display preset mappings (0.122ms)
+✖ disconnected display stays saved and restores only when same display returns (0.073042ms)
+✖ atomically round-trips settings using real files (9.001709ms)
+✖ preserves corrupt bytes in recovery copy and starts safely empty (2.726708ms)
+✖ fresh install is empty and invalid saves leave previous settings intact (0.785458ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 2
+ℹ fail 9
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 197.101334
+
+✖ failing tests:
+
+test at tests/assets.test.ts:4:1
+✖ built-in reticles contain bounded simple geometry (0.501042ms)
+  Error: Not implemented
+      at geometryForShape (<source>/src/assets.ts:1:61)
+      at TestContext.<anonymous> (<source>/tests/assets.test.ts:4:143)
+      at Test.runInAsyncScope (node:async_hooks:213:14)
+      at Test.run (node:internal/test_runner/test:1106:25)
+      at Test.start (node:internal/test_runner/test:1003:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:358:17)
+
+test at tests/presets.test.ts:10:1
+✖ centers a 40 DIP overlay on a display left of primary (0.673792ms)
+  Error: Not implemented
+      at boundsForPreset (<source>/src/presets.ts:1:60)
+      at TestContext.<anonymous> (<source>/tests/presets.test.ts:11:19)
+      at Test.runInAsyncScope (node:async_hooks:213:14)
+      at Test.run (node:internal/test_runner/test:1106:25)
+      at Test.start (node:internal/test_runner/test:1003:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:358:17)
+
+test at tests/presets.test.ts:13:1
+✖ uses display origin and DIP offsets without applying scale twice (0.102208ms)
+  Error: Not implemented
+      at boundsForPreset (<source>/src/presets.ts:1:60)
+      at TestContext.<anonymous> (<source>/tests/presets.test.ts:14:19)
+      at Test.runInAsyncScope (node:async_hooks:213:14)
+      at Test.run (node:internal/test_runner/test:1106:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:788:18)
+      at Test.postRun (node:internal/test_runner/test:1235:19)
+      at Test.run (node:internal/test_runner/test:1163:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:358:3)
+
+test at tests/presets.test.ts:16:1
+✖ clamps large offsets to selected display instead of leaking onto adjacent display (0.053917ms)
+  Error: Not implemented
+      at boundsForPreset (<source>/src/presets.ts:1:60)
+      at TestContext.<anonymous> (<source>/tests/presets.test.ts:17:19)
+      at Test.runInAsyncScope (node:async_hooks:213:14)
+      at Test.run (node:internal/test_runner/test:1106:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:788:18)
+      at Test.postRun (node:internal/test_runner/test:1235:19)
+      at Test.run (node:internal/test_runner/test:1163:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7)
+
+test at tests/presets.test.ts:19:1
+✖ rejects non-finite and out-of-range settings (0.210459ms)
+  Error: Not implemented
+      at validatePreset (<source>/src/presets.ts:2:59)
+      at TestContext.<anonymous> (<source>/tests/presets.test.ts:21:19)
+      at Test.runInAsyncScope (node:async_hooks:213:14)
+      at Test.run (node:internal/test_runner/test:1106:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:788:18)
+      at Test.postRun (node:internal/test_runner/test:1235:19)
+      at Test.run (node:internal/test_runner/test:1163:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7)
+
+test at tests/presets.test.ts:28:1
+✖ disconnected display stays saved and restores only when same display returns (0.073042ms)
+  Error: Not implemented
+      at livePresets (<source>/src/presets.ts:4:56)
+      at TestContext.<anonymous> (<source>/tests/presets.test.ts:29:19)
+      at Test.runInAsyncScope (node:async_hooks:213:14)
+      at Test.run (node:internal/test_runner/test:1106:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:788:18)
+      at Test.postRun (node:internal/test_runner/test:1235:19)
+      at Test.run (node:internal/test_runner/test:1163:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7)
+
+test at tests/presets.test.ts:34:1
+✖ atomically round-trips settings using real files (9.001709ms)
+  Error: Not implemented
+      at PresetStore.save (<source>/src/presets.ts:5:103)
+      at TestContext.<anonymous> (<source>/tests/presets.test.ts:36:53)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7)
+
+test at tests/presets.test.ts:38:1
+✖ preserves corrupt bytes in recovery copy and starts safely empty (2.726708ms)
+  Error: Not implemented
+      at PresetStore.load (<source>/src/presets.ts:5:165)
+      at TestContext.<anonymous> (<source>/tests/presets.test.ts:40:98)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7)
+
+test at tests/presets.test.ts:42:1
+✖ fresh install is empty and invalid saves leave previous settings intact (0.785458ms)
+  Error: Not implemented
+      at PresetStore.load (<source>/src/presets.ts:5:165)
+      at TestContext.<anonymous> (<source>/tests/presets.test.ts:44:67)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7)

@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "targets": {
+    "display-presets": {
+      "targetKind": "new-target",
+      "projectId": "ef64e26c-2a82-4cf2-b18d-3c16ca23c514",
+      "activeDraftId": "2a2f0d97-f300-4f9c-ba7f-db4d7571f4ae",
+      "contextFiles": [
+        ".superdesign/init/components.md",
+        ".superdesign/init/routes.md"
+      ],
+      "fingerprints": {
+        ".superdesign/init/components.md": "202c5098e0aa8567609d3ffea0cc1ca2f373695928654511b2d9900e206b6d6a",
+        ".superdesign/init/routes.md": "5522546fb66ab6e0a51dad2e2b23912f18d54351603733c4f371a135831ec261"
+      },
+      "drafts": {
+        "2a2f0d97-f300-4f9c-ba7f-db4d7571f4ae": {
+          "title": "ReticleQuay native controls",
+          "visualDirection": "Original navy, ivory and mint native desktop preset editor; authored directly after credit-blocked generation.",
+          "currentVersion": 1
+        }
+      },
+      "updatedAt": "2026-09-11T06:18:44.535233+00:00"
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "name": "reticlequay",
+  "productName": "ReticleQuay",
+  "version": "1.0.0",
+  "description": "Independent display presets for a local click-through crosshair overlay.",
+  "author": "Trieflow LLC",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "node scripts/build.cjs",
+    "test": "tsx --test tests/*.test.ts",
+    "start": "npm run build && electron .",
+    "test:smoke": "npm run build && node tests/electron-smoke.cjs",
+    "package:win": "npm run build && node scripts/package-windows.cjs"
+  },
+  "devDependencies": {
+    "electron": "44.3.0",
+    "typescript": "7.0.2",
+    "tsx": "4.23.13",
+    "@electron/packager": "20.3.0",
+    "@playwright/test": "1.63.0",
+    "@types/node": "24.10.1"
+  },
+  "engines": {
+    "node": ">=24"
+  }
+}

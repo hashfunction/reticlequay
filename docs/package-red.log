@@ -1,0 +1,38 @@
+
+> reticlequay@1.0.0 test
+> tsx --test tests/*.test.ts
+
+✔ built-in reticles contain bounded simple geometry (2.076083ms)
+✔ imported file paths, markup and unsupported shapes are rejected (0.409042ms)
+✔ save activates only the matching monitor; delete removes its active mapping (1.147916ms)
+✔ named presets load independently per display and cannot migrate existing IDs (0.235041ms)
+✔ malformed commands cannot add privileged operations or extra fields (0.108792ms)
+✔ IPC permits the controls main frame and denies overlay, subframes and navigated frames (0.091208ms)
+✖ portable staging includes runnable app and licenses while excluding source, tests and unsafe legacy assets (2.962583ms)
+✔ centers a 40 DIP overlay on a display left of primary (0.787542ms)
+✔ uses display origin and DIP offsets without applying scale twice (0.079958ms)
+✔ clamps large offsets to selected display instead of leaking onto adjacent display (0.067625ms)
+✔ rejects non-finite and out-of-range settings (0.440375ms)
+✔ rejects duplicates, dangling selections and cross-display preset mappings (0.173833ms)
+✔ disconnected display stays saved and restores only when same display returns (0.122083ms)
+✔ atomically round-trips settings using real files (11.227ms)
+✔ preserves corrupt bytes in recovery copy and starts safely empty (1.311042ms)
+✔ fresh install is empty and invalid saves leave previous settings intact (4.21125ms)
+ℹ tests 16
+ℹ suites 0
+ℹ pass 15
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 187.344209
+
+✖ failing tests:
+
+test at tests/package.test.ts:8:1
+✖ portable staging includes runnable app and licenses while excluding source, tests and unsafe legacy assets (2.962583ms)
+  Error: Not implemented
+      at exports.stageApplication (<source>/scripts/package-windows.cjs:1:42)
+      at TestContext.<anonymous> (<source>/tests/package.test.ts:10:12)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:358:3)

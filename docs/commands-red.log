@@ -1,0 +1,63 @@
+
+> reticlequay@1.0.0 test
+> tsx --test tests/*.test.ts
+
+✔ built-in reticles contain bounded simple geometry (0.482875ms)
+✔ imported file paths, markup and unsupported shapes are rejected (0.1545ms)
+✖ save activates only the matching monitor; delete removes its active mapping (0.442208ms)
+✖ named presets load independently per display and cannot migrate existing IDs (0.071ms)
+✔ malformed commands cannot add privileged operations or extra fields (0.162583ms)
+✖ IPC permits the controls main frame and denies overlay, subframes and navigated frames (0.08375ms)
+✔ centers a 40 DIP overlay on a display left of primary (0.751666ms)
+✔ uses display origin and DIP offsets without applying scale twice (0.080667ms)
+✔ clamps large offsets to selected display instead of leaking onto adjacent display (0.061417ms)
+✔ rejects non-finite and out-of-range settings (0.439709ms)
+✔ rejects duplicates, dangling selections and cross-display preset mappings (0.176041ms)
+✔ disconnected display stays saved and restores only when same display returns (0.1165ms)
+✔ atomically round-trips settings using real files (12.953708ms)
+✔ preserves corrupt bytes in recovery copy and starts safely empty (7.923458ms)
+✔ fresh install is empty and invalid saves leave previous settings intact (8.553833ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 12
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 181.541708
+
+✖ failing tests:
+
+test at tests/commands.test.ts:6:1
+✖ save activates only the matching monitor; delete removes its active mapping (0.442208ms)
+  Error: Not implemented
+      at applyCommand (<source>/src/commands.ts:1:57)
+      at TestContext.<anonymous> (<source>/tests/commands.test.ts:7:13)
+      at Test.runInAsyncScope (node:async_hooks:213:14)
+      at Test.run (node:internal/test_runner/test:1106:25)
+      at Test.start (node:internal/test_runner/test:1003:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:358:17)
+
+test at tests/commands.test.ts:11:1
+✖ named presets load independently per display and cannot migrate existing IDs (0.071ms)
+  Error: Not implemented
+      at applyCommand (<source>/src/commands.ts:1:57)
+      at TestContext.<anonymous> (<source>/tests/commands.test.ts:12:14)
+      at Test.runInAsyncScope (node:async_hooks:213:14)
+      at Test.run (node:internal/test_runner/test:1106:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:788:18)
+      at Test.postRun (node:internal/test_runner/test:1235:19)
+      at Test.run (node:internal/test_runner/test:1163:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:358:3)
+
+test at tests/commands.test.ts:20:1
+✖ IPC permits the controls main frame and denies overlay, subframes and navigated frames (0.08375ms)
+  Error: Not implemented
+      at trustedSender (<source>/src/commands.ts:2:58)
+      at TestContext.<anonymous> (<source>/tests/commands.test.ts:22:15)
+      at Test.runInAsyncScope (node:async_hooks:213:14)
+      at Test.run (node:internal/test_runner/test:1106:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:788:18)
+      at Test.postRun (node:internal/test_runner/test:1235:19)
+      at Test.run (node:internal/test_runner/test:1163:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7)

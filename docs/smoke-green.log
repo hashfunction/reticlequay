@@ -1,0 +1,10 @@
+
+> reticlequay@1.0.0 test:smoke
+> npm run build && node tests/electron-smoke.cjs
+
+
+> reticlequay@1.0.0 build
+> node scripts/build.cjs
+
+Built ReticleQuay TypeScript main and sandboxed preload scripts.
+PASS: real Electron startup, sandbox bridge, controls save/update, generated overlay, invalid payload rejection, navigation/new-window denial, hide/show and persisted relaunch.

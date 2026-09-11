@@ -1,0 +1,36 @@
+Downloading Electron binary...
+electron.launch: Process failed to launch!
+Call log:
+[2m  - <launching> <source>/node_modules/electron/dist/Electron.app/Contents/MacOS/Electron -r <source>/node_modules/playwright-core/lib/server/electron/loader.js --inspect=0 --remote-debugging-port=0 <source> --user-data-dir=/var/folders/mt/ll630b9x785gtdp6529w25bh0000gn/T/reticlequay-smoke-j4vbUR[22m
+[2m  - <launched> pid=94698[22m
+[2m  - [pid=94698][err] Debugger listening on ws://127.0.0.1:59606/1ddad35f-9ad0-441b-890b-11bb255bd457[22m
+[2m  - [pid=94698][err] For help, see: https://nodejs.org/learn/getting-started/debugging[22m
+[2m  - <ws connecting> ws://127.0.0.1:59606/1ddad35f-9ad0-441b-890b-11bb255bd457[22m
+[2m  - [pid=94698][err] Debugger attached.[22m
+[2m  - <ws connected> ws://127.0.0.1:59606/1ddad35f-9ad0-441b-890b-11bb255bd457[22m
+[2m  - [pid=94698] <kill>[22m
+[2m  - [pid=94698] <will force kill>[22m
+[2m  - [pid=94698] exception while trying to kill process: Error: kill EPERM[22m
+[2m  - <ws disconnected> ws://127.0.0.1:59606/1ddad35f-9ad0-441b-890b-11bb255bd457 code=1006 reason=[22m
+[2m  - [pid=94698] <process did exit: exitCode=null, signal=SIGTRAP>[22m
+[2m  - [pid=94698] starting temporary directories cleanup[22m
+[2m  - [pid=94698] finished temporary directories cleanup[22m
+
+    at async <source>/tests/electron-smoke.cjs:11:7 {
+  log: [
+    '  - <launching> <source>/node_modules/electron/dist/Electron.app/Contents/MacOS/Electron -r <source>/node_modules/playwright-core/lib/server/electron/loader.js --inspect=0 --remote-debugging-port=0 <source> --user-data-dir=/var/folders/mt/ll630b9x785gtdp6529w25bh0000gn/T/reticlequay-smoke-j4vbUR',
+    '  - <launched> pid=94698',
+    '  - [pid=94698][err] Debugger listening on ws://127.0.0.1:59606/1ddad35f-9ad0-441b-890b-11bb255bd457',
+    '  - [pid=94698][err] For help, see: https://nodejs.org/learn/getting-started/debugging',
+    '  - <ws connecting> ws://127.0.0.1:59606/1ddad35f-9ad0-441b-890b-11bb255bd457',
+    '  - [pid=94698][err] Debugger attached.',
+    '  - <ws connected> ws://127.0.0.1:59606/1ddad35f-9ad0-441b-890b-11bb255bd457',
+    '  - [pid=94698] <kill>',
+    '  - [pid=94698] <will force kill>',
+    '  - [pid=94698] exception while trying to kill process: Error: kill EPERM',
+    '  - <ws disconnected> ws://127.0.0.1:59606/1ddad35f-9ad0-441b-890b-11bb255bd457 code=1006 reason=',
+    '  - [pid=94698] <process did exit: exitCode=null, signal=SIGTRAP>',
+    '  - [pid=94698] starting temporary directories cleanup',
+    '  - [pid=94698] finished temporary directories cleanup'
+  ]
+}

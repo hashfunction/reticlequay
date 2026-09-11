@@ -3,15 +3,27 @@ const assert = require("node:assert/strict");
 const fs = require("node:fs/promises");
 const os = require("node:os");
 const path = require("node:path");
+const executablePath = process.env.RETICLEQUAY_EXECUTABLE;
+function launchOptions(userData) {
+  return {
+    ...(executablePath ? { executablePath } : {}),
+    args: [...(executablePath ? [] : [path.resolve(".")]), "--user-data-dir=" + userData],
+    timeout: 30000,
+  };
+}
 (async () => {
-  const root = await fs.mkdtemp(path.join(os.tmpdir(), "reticlequay-smoke-"));
+  const base = process.env.RETICLEQUAY_SMOKE_ROOT || os.tmpdir();
+  await fs.mkdir(base, { recursive: true });
+  const root = await fs.mkdtemp(path.join(base, "reticlequay-smoke-"));
   let app;
   try {
     // Electron's own user-data-dir switch isolates the real application without a test-only IPC surface.
-    app = await electron.launch({
-      args: [path.resolve("."), "--user-data-dir=" + root],
-      timeout: 30000,
-    });
+    app = await electron.launch(launchOptions(root));
+    if (executablePath) {
+      const actual = await app.evaluate(({ app }) => ({ packaged: app.isPackaged, executable: process.execPath }));
+      assert.equal(actual.packaged, true);
+      assert.equal(path.resolve(actual.executable).toLowerCase(), path.resolve(executablePath).toLowerCase());
+    }
     const page = await app.firstWindow();
     await page.waitForFunction(() => Boolean(window.reticlequay));
     assert.deepEqual(
@@ -143,16 +155,15 @@ const path = require("node:path");
       false,
     );
     await page.evaluate(() => window.reticlequay.command({ kind: "toggle" }));
-    await page.screenshot({ path: path.resolve("docs/controls-smoke.png") });
+    await page.evaluate(() => window.scrollTo(0, 0));
+    await page.screenshot({ path: path.resolve("docs/controls-smoke.png"), fullPage: true });
     await app.close();
     app = null;
     const persisted = JSON.parse(
       await fs.readFile(path.join(root, "presets.json"), "utf8"),
     );
     assert.equal(persisted.presets[0].size, 64);
-    app = await electron.launch({
-      args: [path.resolve("."), "--user-data-dir=" + root],
-    });
+    app = await electron.launch(launchOptions(root));
     const relaunched = await app.firstWindow();
     await relaunched.waitForFunction(
       async () =>

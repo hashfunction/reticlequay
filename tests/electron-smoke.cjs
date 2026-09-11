@@ -136,6 +136,22 @@ function launchOptions(userData) {
       prefs.find((w) => w.url.includes("crosshair")).focusable,
       false,
     );
+    if (executablePath && process.platform === "win32") {
+      // Resize the actual installed app window; screenshots contain its real rendering,
+      // with no image scaling, overlays, or replacement UI.
+      await app.evaluate(({ BrowserWindow }) => {
+        const controls = BrowserWindow.getAllWindows().find((w) => !w.webContents.getURL().includes("crosshair"));
+        controls.setContentSize(1366, 900);
+      });
+      await page.waitForFunction(() => window.innerWidth >= 1366 && window.innerHeight >= 900);
+      await page.evaluate(() => window.scrollTo(0, 0));
+      await page.screenshot({ path: path.resolve("docs/store-controls.png"), fullPage: true });
+      await page.getByText("About & help", { exact: true }).click();
+      await page.evaluate(() => window.scrollTo(0, 0));
+      await page.screenshot({ path: path.resolve("docs/store-help.png"), fullPage: true });
+      await page.getByText("About & help", { exact: true }).click();
+    }
+    // The intentional denied navigation leaves Playwright auto-wait pending; perform UI clicks before this security probe.
     const before = page.url();
     await page.evaluate(() => {
       location.href = "https://example.com";
@@ -157,20 +173,6 @@ function launchOptions(userData) {
     await page.evaluate(() => window.reticlequay.command({ kind: "toggle" }));
     await page.evaluate(() => window.scrollTo(0, 0));
     await page.screenshot({ path: path.resolve("docs/controls-smoke.png"), fullPage: true });
-    if (executablePath && process.platform === "win32") {
-      // Resize the actual installed app window; screenshots contain its real rendering,
-      // with no image scaling, overlays, or replacement UI.
-      await app.evaluate(({ BrowserWindow }) => {
-        const controls = BrowserWindow.getAllWindows().find((w) => !w.webContents.getURL().includes("crosshair"));
-        controls.setContentSize(1366, 900);
-      });
-      await page.waitForFunction(() => window.innerWidth >= 1366 && window.innerHeight >= 900);
-      await page.evaluate(() => window.scrollTo(0, 0));
-      await page.screenshot({ path: path.resolve("docs/store-controls.png"), fullPage: true });
-      await page.getByText("About & help", { exact: true }).click();
-      await page.evaluate(() => window.scrollTo(0, 0));
-      await page.screenshot({ path: path.resolve("docs/store-help.png"), fullPage: true });
-    }
     await app.close();
     app = null;
     const persisted = JSON.parse(

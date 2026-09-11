@@ -40,5 +40,6 @@ jobs:
             build/*.msix
             build/build-evidence.json
             docs/controls-smoke.png
+            docs/store-*.png
           if-no-files-found: error
           retention-days: 14

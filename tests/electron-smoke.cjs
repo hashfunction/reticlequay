@@ -141,14 +141,16 @@ function launchOptions(userData) {
       // with no image scaling, overlays, or replacement UI.
       await app.evaluate(({ BrowserWindow }) => {
         const controls = BrowserWindow.getAllWindows().find((w) => !w.webContents.getURL().includes("crosshair"));
-        controls.setContentSize(1366, 900);
+        controls.setContentSize(1400, 1000);
       });
-      await page.waitForFunction(() => window.innerWidth >= 1366 && window.innerHeight >= 900);
+      await page.waitForFunction(() => window.innerWidth >= 1400 && window.innerHeight >= 1000);
       await page.evaluate(() => window.scrollTo(0, 0));
-      await page.screenshot({ path: path.resolve("docs/store-controls.png"), fullPage: true });
+      const controlsImage = await page.screenshot({ path: path.resolve("docs/store-controls.png"), fullPage: true });
+      assert.ok(controlsImage.readUInt32BE(16) >= 1366 && controlsImage.readUInt32BE(20) >= 768, "Store controls screenshot dimensions");
       await page.getByText("About & help", { exact: true }).click();
       await page.evaluate(() => window.scrollTo(0, 0));
-      await page.screenshot({ path: path.resolve("docs/store-help.png"), fullPage: true });
+      const helpImage = await page.screenshot({ path: path.resolve("docs/store-help.png"), fullPage: true });
+      assert.ok(helpImage.readUInt32BE(16) >= 1366 && helpImage.readUInt32BE(20) >= 768, "Store help screenshot dimensions");
       await page.getByText("About & help", { exact: true }).click();
     }
     // The intentional denied navigation leaves Playwright auto-wait pending; perform UI clicks before this security probe.

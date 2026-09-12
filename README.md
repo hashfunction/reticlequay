@@ -1,4 +1,4 @@
-# ReticleQuay
+# AimWisp
 
 A local crosshair overlay with independent named presets for each connected display.
 A maintained MIT-licensed fork of [Crosshair Y](https://github.com/YSSF8/crosshair-y)
@@ -31,15 +31,15 @@ MSIX or a Store-certified package. [Build and validation notes](docs/reticlequay
 
 ## Help and licensing
 
-[Product](https://reticlequay.trieflow.com) ·
-[Support](https://reticlequay.trieflow.com/support) ·
-[Privacy](https://reticlequay.trieflow.com/privacy)
+[Product](https://aimwisp.trieflow.com) ·
+[Support](https://aimwisp.trieflow.com/support) ·
+[Privacy](https://aimwisp.trieflow.com/privacy)
 
 These canonical release endpoints are managed separately from this source task;
 their availability is a release gate, not established by an app build.
 
-Presets are in `presets.json` within Electron's ReticleQuay user-data directory
-(normally `%APPDATA%/ReticleQuay` on Windows). Corrupt settings are renamed to a
+Presets are in `presets.json` within the existing application user-data directory
+(`%APPDATA%/ReticleQuay` on Windows, retained so renamed updates preserve presets). Corrupt settings are renamed to a
 `presets.corrupt-*.json` recovery file. Save failures leave the last valid file
 and active state intact. A startup read error disables all settings commands;
 restore read access to presets.json and restart before editing. Successfully

@@ -8,7 +8,7 @@ interface Store {
 }
 const READ_FAILURE =
   "Presets could not be read. Editing is disabled to protect your saved presets. " +
-  "Check read access to ReticleQuay’s presets.json and settings folder, then restart ReticleQuay.";
+  "Check read access to AimWisp’s presets.json and settings folder, then restart AimWisp.";
 
 /** Owns the loading prerequisite for every persisted settings mutation. */
 export class SettingsSession {

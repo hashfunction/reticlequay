@@ -156,7 +156,7 @@ async function command(value, success, reset = true) {
   if (busy) return;
   if (!state?.settingsWritable) {
     message(
-      state?.notice || "Presets are unavailable. Restart ReticleQuay.",
+      state?.notice || "Presets are unavailable. Restart AimWisp.",
       true,
     );
     return;
@@ -172,7 +172,7 @@ async function command(value, success, reset = true) {
     }
   } catch {
     message(
-      "Could not reach ReticleQuay. Restart the application and retry.",
+      "Could not reach AimWisp. Restart the application and retry.",
       true,
     );
   } finally {
@@ -226,7 +226,7 @@ for (const link of document.querySelectorAll("[data-help]"))
       if (!r.ok) message(r.error, true);
     } catch {
       message(
-        "Could not open help. Visit reticlequay.trieflow.com/support.",
+        "Could not open help. Visit aimwisp.trieflow.com/support.",
         true,
       );
     }
@@ -238,4 +238,4 @@ window.reticlequay
     if (result.ok) render(result.state, true);
     else message(result.error, true);
   })
-  .catch(() => message("Could not load settings. Restart ReticleQuay.", true));
+  .catch(() => message("Could not load settings. Restart AimWisp.", true));

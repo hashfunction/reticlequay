@@ -1,7 +1,7 @@
-# ReticleQuay build and verification
+# AimWisp build and verification
 
 Baseline: Crosshair Y 4.2, commit `51edd7201021b92382a0e32960d27c21c5c2341b`.
-Source branch: `codex/reticlequay`. Product version: `1.0.0`.
+Source branch: `codex/reticlequay`. Product version: `1.0.1`.
 
 ## Reproducible commands
 

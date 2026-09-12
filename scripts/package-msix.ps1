@@ -4,8 +4,8 @@ $ErrorActionPreference = 'Stop'
 Set-StrictMode -Version Latest
 if (-not $IsWindows) { throw 'MSIX packaging requires Windows.' }
 $sourceRoot = Split-Path -Parent $PSScriptRoot
-$portable = Join-Path $sourceRoot 'build/ReticleQuay-win32-x64'
-if (-not (Test-Path (Join-Path $portable 'ReticleQuay.exe'))) { throw 'Run npm run package:win first.' }
+$portable = Join-Path $sourceRoot 'build/AimWisp-win32-x64'
+if (-not (Test-Path (Join-Path $portable 'AimWisp.exe'))) { throw 'Run npm run package:win first.' }
 $kitRoot = Join-Path ${env:ProgramFiles(x86)} 'Windows Kits/10/bin'
 $makeAppx = Get-ChildItem -Path "$kitRoot/*/x64/makeappx.exe" | Sort-Object FullName -Descending | Select-Object -First 1
 if (-not $makeAppx) { throw 'Windows SDK MakeAppx.exe was not found.' }
@@ -40,22 +40,22 @@ $manifest = @"
 <?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities" IgnorableNamespaces="uap rescap">
  <Identity Name="1659hashfunction.ReticleQuay" Publisher="CN=B6A2631A-FD32-45CC-AE12-82466975F528" Version="$version" ProcessorArchitecture="x64"/>
- <Properties><DisplayName>ReticleQuay</DisplayName><PublisherDisplayName>hashfunction</PublisherDisplayName><Description>Independent crosshair presets for your displays.</Description><Logo>Assets\StoreLogo.png</Logo></Properties>
+ <Properties><DisplayName>AimWisp</DisplayName><PublisherDisplayName>hashfunction</PublisherDisplayName><Description>Independent crosshair presets for your displays.</Description><Logo>Assets\StoreLogo.png</Logo></Properties>
  <Resources><Resource Language="en-US"/></Resources>
  <Dependencies><TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.19041.0" MaxVersionTested="10.0.26100.0"/></Dependencies>
- <Applications><Application Id="ReticleQuay" Executable="ReticleQuay.exe" EntryPoint="Windows.FullTrustApplication"><uap:VisualElements DisplayName="ReticleQuay" Description="Independent crosshair presets for your displays." BackgroundColor="#101b27" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png"/></Application></Applications>
+ <Applications><Application Id="ReticleQuay" Executable="AimWisp.exe" EntryPoint="Windows.FullTrustApplication"><uap:VisualElements DisplayName="AimWisp" Description="Independent crosshair presets for your displays." BackgroundColor="#101b27" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png"/></Application></Applications>
  <Capabilities><rescap:Capability Name="runFullTrust"/></Capabilities>
 </Package>
 "@
 $manifest | Set-Content -Path (Join-Path $stage 'AppxManifest.xml') -Encoding utf8NoBOM
-$output = Join-Path $sourceRoot "build/ReticleQuay_$($version)_x64.msix"
+$output = Join-Path $sourceRoot "build/AimWisp_$($version)_x64.msix"
 & $makeAppx.FullName pack /d $stage /p $output /o
 if ($LASTEXITCODE -ne 0) { throw "MakeAppx failed with exit $LASTEXITCODE" }
 $evidence = [ordered]@{
     generated_at_utc=[DateTime]::UtcNow.ToString('o');version=$version;architecture='x64';
     source_commit=(git -C $sourceRoot rev-parse HEAD);operating_system=[Environment]::OSVersion.VersionString;
     electron_version='44.3.0';makeappx=$makeAppx.FullName;package_sha256=(Get-FileHash $output -Algorithm SHA256).Hash;
-    executable_sha256=(Get-FileHash (Join-Path $portable 'ReticleQuay.exe') -Algorithm SHA256).Hash;
+    executable_sha256=(Get-FileHash (Join-Path $portable 'AimWisp.exe') -Algorithm SHA256).Hash;
     signed=$false;installation_tested=$false;submitted=$false;
     notes='Unsigned package built with Store-assigned identity. Installation, installed workflow testing, hardware checks and Store submission remain separate gates.'
 }

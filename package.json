@@ -1,7 +1,7 @@
 {
-  "name": "reticlequay",
-  "productName": "ReticleQuay",
-  "version": "1.0.0",
+  "name": "aimwisp",
+  "productName": "AimWisp",
+  "version": "1.0.1",
   "description": "Independent display presets for a local click-through crosshair overlay.",
   "author": "Trieflow LLC",
   "license": "MIT",

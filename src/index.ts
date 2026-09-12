@@ -20,7 +20,11 @@ import { SettingsSession } from "./settings-session";
 import { OverlayManager } from "./crosshair";
 import { secureProtocol, secureWindow } from "./security";
 import type { AppState, DisplayGeometry, Reply } from "./types";
-app.setName("ReticleQuay");
+// Keep existing presets across the customer-facing rename. Electron's explicit
+// --user-data-dir continues to select its own isolated location.
+if (!app.commandLine.hasSwitch("user-data-dir"))
+  app.setPath("userData", join(app.getPath("appData"), "ReticleQuay"));
+app.setName("AimWisp");
 protocol.registerSchemesAsPrivileged([
   {
     scheme: "reticlequay",
@@ -64,7 +68,7 @@ function refresh(): void {
     tray.setContextMenu(
       Menu.buildFromTemplate([
         {
-          label: "Open ReticleQuay",
+          label: "Open AimWisp",
           click: () => {
             controls?.show();
           },
@@ -77,7 +81,7 @@ function refresh(): void {
           },
         },
         { type: "separator" },
-        { label: "Quit ReticleQuay", click: () => app.quit() },
+        { label: "Quit AimWisp", click: () => app.quit() },
       ]),
     );
 }
@@ -115,7 +119,7 @@ else {
         minWidth: 760,
         minHeight: 680,
         backgroundColor: "#101b27",
-        title: "ReticleQuay",
+        title: "AimWisp",
         icon: join(app.getAppPath(), "public", "icon.png"),
         show: false,
         autoHideMenuBar: true,
@@ -185,8 +189,8 @@ else {
             if (target === "license") {
               await dialog.showMessageBox(controls!, {
                 type: "info",
-                title: "ReticleQuay licenses",
-                message: "ReticleQuay • Crosshair Y attribution",
+                title: "AimWisp licenses",
+                message: "AimWisp • Crosshair Y attribution",
                 detail:
                   (await readFile(join(app.getAppPath(), "LICENSE"), "utf8")) +
                   "\n\n" +
@@ -197,7 +201,7 @@ else {
               });
             } else if (target === "support" || target === "privacy")
               await shell.openExternal(
-                `https://reticlequay.trieflow.com/${target}`,
+                `https://aimwisp.trieflow.com/${target}`,
               );
             else throw new Error("Unsupported help target.");
             return { ok: true, state: state() };
@@ -239,7 +243,7 @@ else {
         tray = new Tray(
           nativeImage.createFromBitmap(pixels, { width: 16, height: 16 }),
         );
-        tray.setToolTip("ReticleQuay");
+        tray.setToolTip("AimWisp");
         tray.on("click", () => controls?.show());
       } catch {
         notice = (
@@ -252,7 +256,7 @@ else {
       refresh();
     })
     .catch((error) => {
-      console.error("ReticleQuay startup failed:", error);
+      console.error("AimWisp startup failed:", error);
       app.quit();
     });
 }

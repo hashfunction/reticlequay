@@ -11,7 +11,7 @@ try {
     if ($LASTEXITCODE -ne 0) { throw 'Electron smoke test failed.' }
     npm run package:win
     if ($LASTEXITCODE -ne 0) { throw 'Windows packaging failed.' }
-    $archive = Join-Path (Get-Location) 'build/ReticleQuay-1.0.0-win32-x64.zip'
-    Compress-Archive -Path 'build/ReticleQuay-win32-x64' -DestinationPath $archive -Force
+    $archive = Join-Path (Get-Location) 'build/AimWisp-1.0.1-win32-x64.zip'
+    Compress-Archive -Path 'build/AimWisp-win32-x64' -DestinationPath $archive -Force
     Get-FileHash -Algorithm SHA256 $archive
 } finally { Pop-Location }

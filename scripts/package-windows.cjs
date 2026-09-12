@@ -38,7 +38,7 @@ async function main() {
     const { packager } = await import("@electron/packager");
     const result = await packager({
       dir: staging,
-      name: "ReticleQuay",
+      name: "AimWisp",
       icon: path.resolve("assets/reticlequay.ico"),
       platform: "win32",
       arch: "x64",
@@ -50,7 +50,7 @@ async function main() {
       appCopyright: "Copyright 2026 Trieflow LLC",
       win32metadata: {
         CompanyName: "Trieflow LLC",
-        FileDescription: "ReticleQuay display preset overlay",
+        FileDescription: "AimWisp display preset overlay",
       },
     });
     console.log("Portable Windows application directory:", result.join(", "));

@@ -24,7 +24,12 @@ function launchOptions(userData) {
       assert.equal(actual.packaged, true);
       assert.equal(path.resolve(actual.executable).toLowerCase(), path.resolve(executablePath).toLowerCase());
     }
+    const branding = await app.evaluate(({ app }) => ({ name: app.getName(), userData: app.getPath("userData") }));
+    assert.equal(branding.name, "AimWisp");
+    assert.equal(await fs.realpath(branding.userData), await fs.realpath(root));
     const page = await app.firstWindow();
+    assert.equal(await page.title(), "AimWisp");
+    assert.doesNotMatch(await page.locator("body").innerText(), /Quay|Trieflow Reticle/i);
     await page.waitForFunction(() => Boolean(window.reticlequay));
     assert.deepEqual(
       await page.evaluate(() => ({

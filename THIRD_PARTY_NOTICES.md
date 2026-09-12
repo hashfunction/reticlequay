@@ -1,13 +1,13 @@
-# ReticleQuay third-party notices
+# AimWisp third-party notices
 
-ReticleQuay is an independently maintained fork of Crosshair Y 4.2 by YSSF8,
+AimWisp is an independently maintained fork of Crosshair Y 4.2 by YSSF8,
 starting at commit 51edd7201021b92382a0e32960d27c21c5c2341b.
 Upstream: https://github.com/YSSF8/Crosshair-Y
 Copyright (c) 2025 YSSF8. Licensed under MIT; the full upstream license is in LICENSE.
-The original history and author attribution are retained. ReticleQuay's changes,
+The original history and author attribution are retained. AimWisp's changes,
 including display presets, security boundaries, UI and geometric reticles, are
 Copyright (c) 2026 Trieflow LLC and distributed under that same MIT license.
-ReticleQuay is not affiliated with or endorsed by the upstream author.
+AimWisp is not affiliated with or endorsed by the upstream author.
 
 ## Bundled runtime
 
@@ -37,4 +37,4 @@ System UI fonts are referenced by family name and are not bundled.
 Upstream PNG reticles, icons, unaccompanied Raleway font, theme styles,
 raw SVG editor, downloader, and custom-elements assets were removed because
 independent provenance for these assets was not established during this audit.
-No upstream logo or product screenshots are distributed with ReticleQuay.
+No upstream logo or product screenshots are distributed with AimWisp.

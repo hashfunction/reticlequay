@@ -17,4 +17,4 @@ const result = cp.spawnSync(
   { stdio: "inherit" },
 );
 if (result.status !== 0) process.exit(result.status || 1);
-console.log("Built ReticleQuay TypeScript main and sandboxed preload scripts.");
+console.log("Built AimWisp TypeScript main and sandboxed preload scripts.");
